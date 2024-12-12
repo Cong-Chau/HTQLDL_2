@@ -5,40 +5,40 @@
     <h1 class="heading">Báo cáo tháng</h1>
     <div class="form-report">
       <label for="month">Tháng
-        <input
-          type="number"
-          id="month"
-          name="month"
-          min="1"
-          max="12"
-          step="1"
-          placeholder="Nhập tháng"
-          required
-        />
+        <select name="month" id="month">
+          <option value="" selected disabled hidden></option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+          <option value="11">11</option>
+          <option value="12">12</option>
+        </select>
       </label>
       <label for="year">Năm
-        <input
-          type="number"
-          id="year"
-          name="year"
-          min="2020"
-          max="2024"
-          step="1"
-          placeholder="Nhập năm"
-          required
-        />
+        <select name="year" id="year">
+          <option value="" selected disabled hidden></option>
+          <option value="2023">2023</option>
+          <option value="2024">2024</option>
+          <option value="2025">2025</option>
+        </select>
       </label>
     </div>
 
     <div class="type-report">
       <a>Loại báo cáo </a>
       <label for="opt-1">
-        <input type="radio" id="opt-1" name="type" value="opt-1" />Báo cáo doanh
+        <input type="radio" id="opt" name="type" value="opt-1" />Báo cáo doanh
         thu
       </label>
       <label for="opt-2">
-        <input type="radio" id="opt-2" name="type" value="opt-2" />Báo cáo công
-        nợ
+        <input type="radio" id="opt" name="type" value="opt-2" />Báo cáo công nợ
       </label>
     </div>
     <div class="btn-report-page">
@@ -46,7 +46,7 @@
     </div>
   </div>
   <div class="report-page-content">
-    <div class="report hidden need-reset">
+    <div class="report hidden">
       <div class="download">
         <p class="date"></p>
         <button class="btn-download">Tải xuống</button>
@@ -59,7 +59,7 @@
               <th>STT</th>
               <th>Đại lý</th>
               <th>Số phiếu xuất</th>
-              <th>Tổng giá trị(đồng)</th>
+              <th>Tổng giá trị</th>
               <th>Tỉ lệ</th>
             </tr>
           </thead>
@@ -73,9 +73,9 @@
             <tr>
               <th>STT</th>
               <th>Đại lý</th>
-              <th>Nợ đầu(đồng)</th>
-              <th>Phát sinh(đồng)</th>
-              <th>Nợ cuối(đồng)</th>
+              <th>Nợ đầu</th>
+              <th>Phát sinh</th>
+              <th>Nợ cuối</th>
             </tr>
           </thead>
           <tbody class="debt-body"></tbody>
@@ -85,3 +85,5 @@
   </div>
   <div class="space"></div>
 </div>
+
+<script src="js/report.js"></script>

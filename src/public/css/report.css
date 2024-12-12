@@ -31,9 +31,9 @@
   font-size: 25px;
 }
 
-.report-page-header .form-report input {
+.report-page-header .form-report select {
   width: 320px;
-  height: 35px;
+  height: 40px;
   border-radius: 7px;
   border: solid 1px gray;
   padding-left: 10px;

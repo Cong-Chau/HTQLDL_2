@@ -1,6 +1,31 @@
+<link rel="stylesheet" href="css/search.css" />
+
 <div id="search-content" class="content-page">
-  {{! Viết thêm vào đây }}
-  <h1>Search</h1>
-  {{!  }}
+  <div class="search-page-header">
+    <span>Nhập tên đại lý</span>
+    <input type="text" name="search-name" />
+    <button id="btn-search">Tra cứu</button>
+  </div>
+
+  <div class="search-page-content">
+    <div class="search-text hidden"><span>Kết quả tra cứu</span></div>
+
+    <!--bang  tra  cứu đại  lý-->
+    <div class="search-table hidden">
+      <table>
+        <thead>
+          <tr>
+            <th>STT</th>
+            <th>Đại lý</th>
+            <th>Loại</th>
+            <th>Quận</th>
+            <th>Tiền nợ</th>
+          </tr>
+        </thead>
+        <tbody id="render-search">
+        </tbody>
+      </table>
+    </div>
+  </div>
   <div class="space"></div>
 </div>

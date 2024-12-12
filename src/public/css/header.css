@@ -23,6 +23,10 @@ body {
   height: 50px;
 }
 
+.space {
+  height: 25px;
+}
+
 #header {
   position: fixed;
   top: 0;
