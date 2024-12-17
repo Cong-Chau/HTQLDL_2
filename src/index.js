@@ -3,6 +3,8 @@ const port = 3000;
 const morgan = require("morgan");
 const handlebars = require("express-handlebars");
 const path = require("path");
+
+const puppeteer = require("puppeteer");
 const app = express();
 
 // Import Routes
@@ -16,7 +18,6 @@ const exportRouter = require("./routes/exportRouter.js");
 const receiptRouter = require("./routes/receiptRouter.js");
 const reportRouter = require("./routes/reportRouter.js");
 const settingRouter = require("./routes/settingRouter.js");
-
 // Middleware
 app.use(express.static(path.join(__dirname, "public")));
 app.use(morgan("combined"));
@@ -48,7 +49,6 @@ app.use("/", exportRouter);
 app.use("/", receiptRouter);
 app.use("/", reportRouter);
 app.use("/", settingRouter);
-
 // Listen
 app.listen(port, () => {
   console.log(`Example app listening on http://localhost:${port}/login`);

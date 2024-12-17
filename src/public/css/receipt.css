@@ -1,0 +1,91 @@
+#container #receipt-content {
+  position: absolute;
+  right: 0;
+  width: 85%;
+  height: 100vh;
+}
+
+#container #receipt-content .receipt_lable {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 15%;
+  font-size: 30px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  margin: 23px;
+  border-radius: 10px;
+  box-shadow: 2px 2px 2px 2px rgb(184, 184, 184);
+}
+
+#container #receipt-content .box-input {
+  height: 80%;
+  background-color: white;
+  margin: 20px;
+  border-radius: 10px;
+  box-shadow: 2px 2px 2px 2px rgb(184, 184, 184);
+  font-size: 23px;
+}
+
+#receipt-content .box-input ul {
+  padding: 0;
+  margin: 5px 40px;
+  list-style-type: none; /* Loại bỏ dấu chấm */
+  text-align: left;
+  position: absolute;
+}
+
+#receipt-content .box-input .lable_input li {
+  padding: 20px;
+}
+
+#receipt-content .box-input .input_content {
+  position: relative;
+  top: 0px;
+  left: 180px;
+  display: flex; /* Kích hoạt Flexbox */
+  flex-direction: column; /* Sắp xếp các phần tử theo cột (dọc) */
+  align-items: stretch; /* Đảm bảo các input cùng chiều rộng */
+}
+
+#receipt-content .box-input .input_content input {
+  font-size: 14px; /* Đồng nhất kích thước chữ */
+  border: 1px solid #ccc; /* Viền */
+  border-radius: 5px; /* Bo góc */
+  /* background-color: #eeeae8; */
+  padding: 9px;
+  margin: 16px;
+}
+
+#receipt-content .input_content input[type="text"],
+#receipt-content .input_content input[type="number"] {
+  width: 60%; /* Input chiếm 60% chiều rộng */
+}
+
+#receipt-content .input_content input[type="date"] {
+  width: 12%; /* Input cho ngày chiếm 12% chiều rộng */
+}
+
+#receipt-content .input_content li {
+  display: inline-block; /* Các input sẽ hiển thị trên cùng một dòng */
+  margin-right: 10px; /* Khoảng cách giữa các phần tử */
+}
+
+#receipt-content .box-input .create_receipt {
+  width: 150px; /* Tăng chiều rộng */
+  height: 35px;
+  position: absolute;
+  border-radius: 5px; /* Bo góc */
+  margin: 20px;
+  font-weight: bold;
+  bottom: 0px;
+  left: 45%; /* Đặt phần tử bắt đầu từ giữa cửa sổ */
+  transform: translateX(-50%); /* Dịch ngược 50% chiều rộng để căn giữa */
+}
+
+#receipt-content .box-input .create_receipt:hover {
+  background-color: red;
+}
