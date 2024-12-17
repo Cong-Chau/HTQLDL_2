@@ -1,6 +1,16 @@
 <div id="search-content" class="content-page">
   {{! Viết thêm vào đây }}
-  <h1>Search</h1>
+   <div class="search">
+            <p id="title-search">Nhập tên đại lý</p>
+            <input type="text" id="search-agent" placeholder="Nhập tên đại lý"/>
+            <button id="search-button">Tra Cứu</button>
+        </div>
+        <div id="listtable-container">
+            <h2 id="text">Kết quả tra cứu</h2>
+            <div id="agent-list"></div>
+        </div>
   {{!  }}
   <div class="space"></div>
 </div>
+ <script src="js\search.js"></script>
+ <script src="https://cdn.jsdelivr.net/npm/fuse.js"></script>
