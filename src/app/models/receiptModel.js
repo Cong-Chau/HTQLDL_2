@@ -1,4 +1,5 @@
 const db = require("../../config/connectDB/connect.js");
+const { update_debt } = require("../controllers/receiptController.js");
 
 const getDealerInfoByName = function (dealerName, callback) {
   try {
@@ -44,4 +45,80 @@ const getDealerInfoByName = function (dealerName, callback) {
   }
 };
 
-module.exports = { getDealerInfoByName };
+const getAllReceipts = () => {
+  return new Promise((resolve, reject) => {
+    const query = "SELECT * FROM PhieuThuTien"; // Truy vấn lấy toàn bộ dữ liệu từ bảng
+
+    db.execute(query, (err, results) => {
+      if (err) {
+        console.error("Lỗi khi truy vấn cơ sở dữ liệu:", err.message);
+        return reject(err); // Trả lỗi nếu có
+      }
+      resolve(results); // Trả kết quả về khi truy vấn thành công
+    });
+  });
+};
+
+// Hàm tạo phiếu thu tiền
+// Hàm xử lý lưu dữ liệu
+const createReceipt = (data, callback) => {
+  let { ma_phieu_thu_tien, ma_dai_ly, ngay_lap_phieu, so_tien_thu } = data;
+
+  console.log("Dữ liệu để lưu:", {
+    ma_phieu_thu_tien,
+    ma_dai_ly,
+    ngay_lap_phieu,
+    so_tien_thu,
+  });
+
+  const query = `
+    INSERT INTO PhieuThuTien (ma_phieu_thu_tien, ma_dai_ly, ngay_lap_phieu, so_tien_thu)
+    VALUES (?, ?, ?, ?)
+  `;
+
+  // Thực hiện truy vấn cơ sở dữ liệu
+  db.execute(
+    query,
+    [ma_phieu_thu_tien, ma_dai_ly, ngay_lap_phieu, so_tien_thu],
+    (err, results) => {
+      if (err) {
+        console.error("Lỗi khi truy vấn cơ sở dữ liệu:", err.message);
+        return callback(err, null); // Gọi callback với lỗi
+      }
+
+      console.log("Đã thêm phiếu thu thành công:", results);
+      callback(null, results); // Gọi callback với kết quả
+    }
+  );
+};
+
+const updateDealerInfo = (dealerId, debt, callback) => {
+  console.log(`Nhận PUT cho đại lý ID: ${dealerId} với tổng nợ: ${debt}`);
+
+  // Kiểm tra xem dealerId và debt có tồn tại không
+  if (!dealerId || debt === undefined) {
+    return callback(new Error("Thiếu thông tin đại lý hoặc tổng nợ"));
+  }
+
+  // Cập nhật tổng nợ cho đại lý trong cơ sở dữ liệu
+  const updateQuery = "UPDATE DaiLy SET tong_no = ? WHERE ma_dai_ly = ?";
+  db.execute(updateQuery, [debt, dealerId], (updateErr, updateResult) => {
+    if (updateErr) {
+      console.error(
+        `Lỗi khi cập nhật thông tin đại lý ID ${dealerId}: ${updateErr.message}`
+      );
+      return callback(new Error("Lỗi khi cập nhật thông tin đại lý"));
+    }
+
+    console.log(`Cập nhật thành công cho đại lý ID: ${dealerId}`);
+    // Trả kết quả thành công qua callback
+    return callback(null, updateResult);
+  });
+};
+
+module.exports = {
+  getDealerInfoByName,
+  getAllReceipts,
+  createReceipt,
+  updateDealerInfo,
+};
