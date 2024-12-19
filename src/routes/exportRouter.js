@@ -6,9 +6,10 @@ const router = express.Router();
 // Định tuyến
 router.get("/export/api",exportController.GetInfos);
 
-
+router.post("/api/create-export",exportController.createExport);
 
 router.get("/export", exportController.renderExport);
+
 
 
 
