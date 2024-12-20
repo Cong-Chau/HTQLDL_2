@@ -35,6 +35,7 @@ const savePassword = function (req, res) {
         .status(500)
         .json({ message: "Đã xảy ra lỗi khi mã hóa mật khẩu" });
     }
+
     // Lưu mật khẩu vào database
     forgetModel.commitSave(userName, hashedPassword, (err, results) => {
       if (err) {

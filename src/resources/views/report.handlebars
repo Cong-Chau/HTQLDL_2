@@ -2,45 +2,24 @@
 
 <div id="report-content" class="content-page">
   <div class="report-page-header">
-    <h1 class="heading">Báo cáo tháng</h1>
-    <div class="form-report">
-      <label for="month">Tháng
-        <select name="month" id="month">
-          <option value="" selected disabled hidden></option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-          <option value="6">6</option>
-          <option value="7">7</option>
-          <option value="8">8</option>
-          <option value="9">9</option>
-          <option value="10">10</option>
-          <option value="11">11</option>
-          <option value="12">12</option>
-        </select>
-      </label>
-      <label for="year">Năm
-        <select name="year" id="year">
-          <option value="" selected disabled hidden></option>
-          <option value="2023">2023</option>
-          <option value="2024">2024</option>
-          <option value="2025">2025</option>
-        </select>
+    <h1 class="heading">Lập báo cáo tháng</h1>
+
+    <div class="time-create">
+      <label>
+        <p>Tháng:</p>
+        <span></span>
       </label>
     </div>
 
     <div class="type-report">
-      <a>Loại báo cáo </a>
-      <label for="opt-1">
-        <input type="radio" id="opt" name="type" value="opt-1" />Báo cáo doanh
-        thu
-      </label>
-      <label for="opt-2">
-        <input type="radio" id="opt" name="type" value="opt-2" />Báo cáo công nợ
-      </label>
+      <p>Loại báo cáo: </p>
+      <select class="type">
+        <option value="" disabled selected></option>
+        <option value="revenue">Báo cáo doanh thu</option>
+        <option value="debt">Báo cáo công nợ</option>
+      </select>
     </div>
+
     <div class="btn-report-page">
       <button class="btn-report-writing">Lập báo cáo</button>
     </div>
@@ -48,7 +27,6 @@
   <div class="report-page-content">
     <div class="report hidden">
       <div class="download">
-        <p class="date"></p>
         <button class="btn-download">Tải xuống</button>
       </div>
       <div class="revenue-table hidden">

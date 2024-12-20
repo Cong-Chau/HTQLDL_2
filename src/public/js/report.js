@@ -15,6 +15,7 @@ function getListRevenue(month, year) {
     .then((results) => {
       document.querySelector(".report").classList.remove("hidden");
       document.querySelector(".revenue-table").classList.remove("hidden");
+      document.querySelector(".debt-table").classList.add("hidden");
 
       // render dữ liệu
       let i = 1;
@@ -28,11 +29,13 @@ function getListRevenue(month, year) {
               <tr>
                   <td>${i}</td>
                   <td>${each.ten_dai_ly}</td>
-                  <td>${each.so_luong_phieu_xuat}</td>
-                  <td>${each.tong_gia_tri}</td>
-                  <td>${each.ti_le}%</td>
+                  <td>${each.tong_so_luong_phieu_xuat}</td>
+                  <td>$${each.tong_gia_tri_phieu_xuat}</td>
+                  <td>${(each.ti_le * 100).toFixed(2)}%</td>
               </tr>`;
-        toCSV += `${i},${each.ten_dai_ly},${each.so_luong_phieu_xuat},${each.tong_gia_tri},${each.ti_le}%\n`;
+        toCSV += `${i},${each.ten_dai_ly},${each.tong_so_luong_phieu_xuat},$${
+          each.tong_gia_tri_phieu_xuat
+        },${(each.ti_le * 100).toFixed(2)}%\n`;
         i++;
       });
 
@@ -61,6 +64,7 @@ function getListDebt(month, year) {
     .then((results) => {
       document.querySelector(".report").classList.remove("hidden");
       document.querySelector(".debt-table").classList.remove("hidden");
+      document.querySelector(".revenue-table").classList.add("hidden");
 
       // render dữ liệu
       let i = 1;
@@ -73,12 +77,12 @@ function getListDebt(month, year) {
         stringTable += `
             <tr>
                 <td>${i}</td>
-                <td>${each.TenDaiLy}</td>
-                <td>${each.NoDau}</td>
-                <td>${each.PhatSinh}</td>
-                <td>${each.NoCuoi}</td>
+                <td>${each.ten_dai_ly}</td>
+                <td>$${each.no_dau}</td>
+                <td>$${each.phat_sinh}</td>
+                <td>$${each.no_cuoi}</td>
             </tr>`;
-        toCSV += `${i},${each.TenDaiLy},${each.NoDau},${each.PhatSinh},${each.NoCuoi}\n`;
+        toCSV += `${i},${each.ten_dai_ly},$${each.no_dau},$${each.phat_sinh},$${each.no_cuoi}\n`;
         i++;
       });
 
@@ -91,32 +95,22 @@ function getListDebt(month, year) {
 
 function getList() {
   const btnActive = document.querySelector(".btn-report-writing");
-  const monthInput = document.querySelector("#month");
-  const yearInput = document.querySelector("#year");
+  const today = getCurrentMonthYear();
+  const typeReport = document.querySelector(".type-report .type");
 
   btnActive.addEventListener("click", function () {
-    const month = monthInput.value;
-    const year = yearInput.value;
+    const month = today.month;
+    const year = today.year;
 
-    if (month === "" || year === "") {
-      alert("Tháng hoặc năm không hợp lệ");
-      return;
-    }
-
-    const radios = document.querySelectorAll("#opt");
-
-    if (!radios[0].checked && !radios[1].checked) {
-      alert("Vui lòng chọn loại báo cáo");
-      return;
-    }
-
-    if (radios[0].checked) {
+    if (typeReport.value === "revenue") {
       getListRevenue(month, year);
+      return;
     }
-
-    if (radios[1].checked) {
+    if (typeReport.value === "debt") {
       getListDebt(month, year);
+      return;
     }
+    alert("Vui lòng chọn loại báo cáo");
   });
 }
 
@@ -131,6 +125,20 @@ function downloadFile(content, filename) {
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
+  };
+}
+
+// láy tháng năm hiện tại
+function getCurrentMonthYear() {
+  const today = new Date();
+  const month = today.getMonth() + 1; // getMonth() trả về giá trị từ 0 đến 11, cộng thêm 1 để có tháng thực tế
+  const year = today.getFullYear();
+
+  document.querySelector(".time-create span").innerText = `${month} / ${year}`;
+
+  return {
+    month: month,
+    year: year,
   };
 }
 

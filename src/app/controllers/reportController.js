@@ -20,7 +20,7 @@ const listRevenue = function (req, res) {
         .json({ message: "Không có dữ liệu cho tháng và năm này." });
     }
 
-    console.log(revenueList);
+    // console.log(revenueList);
     res.status(200).json({ data: revenueList });
   });
 };
@@ -41,7 +41,7 @@ const listDebt = function (req, res) {
         .json({ message: "Không có dữ liệu cho tháng và năm này." });
     }
 
-    console.log(deptList);
+    // console.log(deptList);
     res.status(200).json({ data: deptList });
   });
 };

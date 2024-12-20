@@ -70,6 +70,12 @@
   border-radius: 50px;
 }
 
+li,
+label,
+button {
+  font-weight: bold;
+}
+
 .item ul,
 .item .maximum {
   margin-top: 50px;
@@ -77,7 +83,6 @@
 }
 
 .type li,
-.unit li,
 .item .maximum {
   background-color: rgb(232, 232, 232);
   margin-bottom: 20px;
@@ -88,16 +93,23 @@
   border-radius: 7px;
 }
 
+.type a {
+  margin-left: 50px;
+  margin-right: -10px;
+}
+
 .type input,
 .maximum input {
   width: 100px;
   height: 35px;
   border-radius: 6px;
   margin-left: 100px;
+  background-color: whitesmoke;
 }
 
 .item .insert,
 .item .edit,
+.item .cancel,
 .item .save {
   width: 80%;
 }
@@ -108,19 +120,16 @@
   border: none;
   border-radius: 10px;
   margin-bottom: 20px;
+  background-color: rgb(131, 131, 131);
+  color: white;
+  font-size: 15px;
 }
 
 .item input {
   padding-left: 20px;
 }
 
-.save button {
-  background-color: rgb(81, 81, 81);
-  color: white;
-  font-size: 15px;
-}
-
-.save button:hover {
-  background-color: gray;
+.item button:hover {
+  background-color: rgb(179, 179, 179);
   cursor: pointer;
 }
