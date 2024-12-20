@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 var exportApi = "http://localhost:3000/import/api";
 var myHeaders = {
   "Content-Type": "application/json", // Gửi dữ liệu JSON
@@ -81,3 +82,6 @@ function reload() {
 }
 
 start();
+=======
+ 
+>>>>>>> e56de7a173bce1a37b85169bd82c930fc74bb9ca
